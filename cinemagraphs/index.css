@@ -1,0 +1,160 @@
+body {
+	margin: 0;
+	background: rgb(0,0,0);
+	overflow: hidden;
+}
+
+*:focus {
+	outline: none;
+}
+
+#background {
+	position: fixed;
+	left: 0;
+	top: -20%;
+	transform: translate(-25%, 0%);
+	height: 150%;
+	filter: blur(10px);
+	z-index: 0;
+	opacity: 0;
+	transition: opacity 0.5s;
+}
+
+#cinemagraph  {
+	position: absolute;
+	max-width: 80%;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	background: rgb(0,0,0);
+	z-index: 2;
+}
+#cinemagraph img {
+	opacity: 1;
+	transition: opacity 0.5s;
+	position: relative;
+	max-width: auto;
+}
+
+div#inner {
+	position: absolute;
+	left: 0;
+	top: calc(50% - 157px);
+	height: 100%;
+	width: 100%;
+	/*padding-top: 5%;*/
+	/*z-index: 3;*/
+}
+
+p, a {
+	display: block;
+	font-family: sans-serif;
+	font-size: 11pt;
+	letter-spacing: 2px;
+	color: rgb(255,255,255);
+	margin: 10px;
+	margin-left: 40px;
+	text-decoration: none;
+	font-variant: small-caps;
+}
+
+#datetime, #weather_div {
+	width: 100%;
+	margin-bottom: 15px;
+}
+
+#datetime p, #weather_div p {
+	display: inline-block;
+	font-size: 14pt;
+	text-align: center;
+	width: 100%;
+	margin: 0;
+}
+#weather_div p {
+	font-size: 11pt;
+}
+
+#search_bar input {
+	width: 80%;
+	padding: 10px;
+	position: relative;
+	left: 10%;
+	/*opacity: 0.8;*/
+	background-color: rgba(0,0,0,0);
+	border: 2px solid white;
+	border-radius: 5px;
+	color: white;
+}
+
+/* --- Categories --- */
+
+div.category {
+	border-left: 1px solid white;
+	position: relative;
+	top: 0%;
+	left: 3%;
+	margin: 2%;
+	/*height: 35%;*/
+	width: 28%;
+	/*z-index: 3;*/
+	display: inline-block;
+	overflow: hidden;
+}
+
+p.header {
+	font-size: 11pt;
+	margin-left: 20px;
+}
+a:hover {
+	/*color: rgb(100,255,100);*/
+	color: rgb(255,255,255);
+	font-style: italic;
+}
+
+
+
+
+
+/* -------- Corner Decoration Stuff Here ------- */
+
+#cinemagraph:before,
+#cinemagraph:after {
+  border-color: transparent;
+  /*transition-timing-function: cubic-bezier(0.95,.05,.795,.035);*/
+  transition: width 2s, height 2s;
+  border-style: solid;
+  border-width: 0;
+  content: "";
+  height: 24px;
+  position: absolute;
+  width: 24px;
+  z-index: 1;
+}
+
+#cinemagraph:before {
+  /*border-color: #33ff33;*/
+  border-right-width: 2px;
+  border-top-width: 2px;
+  right: -10px;
+  top: -10px;
+}
+
+#cinemagraph:after {
+  border-bottom-width: 2px;
+  /*border-color: #33ff33;*/
+  border-left-width: 2px;
+  bottom: -10px;
+  left: -10px;
+}
+
+/*#cinemagraph:hover,
+#cinemagraph.hover {
+  /*background-color: #33ff33;*/
+
+#cinemagraph:hover:before,
+#cinemagraph.clicked:before,
+#cinemagraph:hover:after,
+#cinemagraph.clicked:after {
+  height: 100%;
+  width: 100%;
+}
