@@ -1,0 +1,40 @@
+<html>
+
+<head>
+<title>Tyler Barrett - New Tab Pages</title>
+<script src="jquery-2.2.2.js"></script>
+<link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+	<div id="body_div">
+		<h1>Custom New Tab Pages</h1>
+		<h3>A series of chrome extensions that replace the default 'New Tab' page with custom front-end content.<br />This provided me with experience in front-end web design and implementation. There are a few other examples created before the ones here, but these most genuinely show my ability.</h3>
+		<div id="pages">
+			<a href="grayscale/blank_ntp/index.html"><img class="page_prev" src="grayscale.JPG"></img></a>
+			<a href="cinemagraphs/index.html"><img class="page_prev" src="cinemagraphs.JPG"></img></a>
+			<a href="half/index.html"><img class="page_prev" src="half.JPG"></img></a>
+		</div>
+		<p id="details"></p>
+	</div>
+</body>
+
+<script type="text/javascript">
+
+$(window).load(function() {
+	$("#body_div").addClass("expanded");
+});
+
+var detail_text = ["\"Grayscale\" - January 2017", "\"Cinemagraphs\" - May 2017", "\"Half\" - September 2017"];
+$("img.page_prev").hover(function(e) {
+	$("img.page_prev").not(this).css("opacity", "0.2");
+	$("#details").html(detail_text[$(this).index()]);
+});
+
+$("img.page_prev").mouseout(function(e) {
+	$("img.page_prev").css("opacity", "1.0");
+	$("#details").html("");
+})
+</script>
+
+</html>
