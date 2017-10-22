@@ -4,7 +4,7 @@ body {
 }
 
 #body_div {
-	background-color: rgb(230,230,240);
+	background-color: rgba(230,230,230,0.7);
 	width: 100%;
 
 	position: fixed;
@@ -15,12 +15,20 @@ body {
 
 	overflow: hidden;
 
-	transition: top 0.5s, height 0.5s;
+	transition: top 1.0s, height 1.0s;
 }
 
 #body_div.expanded {
 	top: 30%;
 	height: 50%;
+}
+
+.hero_img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
 }
 
 img.page_prev {
@@ -45,7 +53,9 @@ h3 {
 }
 
 p#details {
-	width: 100%;
+	position: absolute;
+	left: 0;
+	width: 20%;
 	font-size: 14pt;
 	margin-top: 2%;
 }
