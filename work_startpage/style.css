@@ -1,6 +1,6 @@
 body {
 	margin: 0;
-	background: rgb(245, 245, 245);
+	background: rgb(255, 255, 255);
 }
 
 p {
@@ -24,4 +24,47 @@ div#bg {
 	top: 0;
 	left: 0;
 	background: transparent;
+}
+
+/* Date and Time Style */
+
+p#date, p#time {
+	position: fixed;
+	left: 10%;
+}
+
+p#date {
+	top: 25%;
+	font-size: 18pt;
+}
+p#time {
+	top: 15%;
+	font-size: 62pt;
+}
+
+
+/* Links style */
+div#links {
+	position: fixed;
+	left: 10%;
+	top: 30%;
+	width: 30%;
+	height: 60%;
+	/*background-color: rgba(255,0,0,0.1);*/
+}
+div#links a {
+	width: 49%;
+	display: inline-block;
+	height: 20%;
+	background-color: rgba(200,200,200,0.2);
+	margin-bottom: 5px;
+}
+div#links a:hover {
+	background-color: rgba(200,200,200,0.4);
+}
+div#links p {
+	text-align: center;
+	position: relative;
+	top: 50%;
+	transform: translate(0, -50%);
 }
