@@ -8,6 +8,7 @@ p {
 	padding-top: 2px;
 	padding-bottom: 2px;
 	font-family: sans-serif;
+	color: white;
 }
 
 div#projects-bar {
@@ -17,20 +18,24 @@ div#projects-bar {
 	top: 5%;
 }
 
-div#bg {
+div#bg, div#bg img {
 	height: 100%;
 	width: 100%;
 	position: fixed;
 	top: 0;
 	left: 0;
-	background: transparent;
+	/*background: transparent;*/
+	filter: brightness(75%);
+}
+div#bg img {
+	height: auto;
 }
 
 /* Date and Time Style */
 
 p#date, p#time {
 	position: fixed;
-	left: 10%;
+	left: 7%;
 }
 
 p#date {
@@ -39,21 +44,21 @@ p#date {
 }
 p#time {
 	top: 15%;
-	font-size: 62pt;
+	font-size: 66pt;
 }
 
 
 /* Links style */
 div#links {
 	position: fixed;
-	left: 10%;
+	left: 7%;
 	top: 30%;
-	width: 30%;
+	width: 45%;
 	height: 60%;
 	/*background-color: rgba(255,0,0,0.1);*/
 }
 div#links a {
-	width: 49%;
+	width: 33%;
 	display: inline-block;
 	height: 20%;
 	background-color: rgba(200,200,200,0.2);

@@ -16,7 +16,8 @@ div.project:hover, div.project.active {
 div.heading {
 	width: 100%;
 	height: 70px;
-	background: rgb(204,0,0);
+	/*background: rgb(204,0,0);*/
+	background: white;
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -32,7 +33,7 @@ div.heading p {
 	top: 50%;
 	transform: translate(0, -50%);
 	font-weight: bold;
-	color: white;
+	color: black;
 }
 
 div.project-content {
