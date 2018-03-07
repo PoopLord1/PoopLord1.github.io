@@ -1,0 +1,159 @@
+<html>
+
+<head>
+	<title>Hello, Tyler</title>
+	<script src="jquery-2.2.2.js"></script>
+	<link rel="stylesheet" href="style.css" />
+	<link rel="stylesheet" href="todo.css" />
+	<link rel="stylesheet" href="project.css" />
+</head>
+
+<!-- Alright what do we even want here bro?
+	- List of active projects
+	- Epics for each project
+	- Todo list for each of these epics
+	- Active Deadlines for each proj
+	- useful links (eg, confluence, costpoint) -->
+
+<body>
+	<!-- <h1 id="greeting">Welcome.</h1> -->
+	<div id="bg"></div>
+
+	<div class="bodydiv">
+		<p id="time">12:27</p>
+		<p id="date">March 1st 2018</p>
+		<div id="links">
+			<a href="https://outlook.office.com/owa/?realm=i-a-i.com&exsvurl=1&ll-cc=1033&modurl=0">
+				<p>Outlook Online</p>
+			</a>
+			<a href="https://iai-cp.costpointfoundations.com/cpweb/cploginform.htm?1498236088">
+				<p>Costpoint</p>
+			</a>
+			<a href="https://confluence1.i-a-i.com/dashboard.action">
+				<p>Confluence</p>
+			</a>
+			<a href="https://jira1.i-a-i.com/secure/Dashboard.jspa">
+				<p>Jira</p>
+			</a>
+		<!-- Links can go here -->
+		<!-- Todos, Deadlines, Notes -->
+	</div>
+
+	<div id="projects-bar">
+		<div class="project">
+			<div class="heading">
+				<p>CAMEL II</p>
+			</div>
+			<div class="project-content">
+				<div class="deadline-container">
+					<p class="deadline">27 February 2018 - Code Freeze</p>
+				</div>
+				<div class="deadline-container">
+					<p class="deadline">6 March 2018 - CAMEL II Field Test</p>
+				</div>
+				<hr />
+				<div class="todo-container">
+					<div class="single-todo">
+						<div class="checkbox unfinished"></div>
+						<p>Zoom-in and Zoom-out button for CCC Google Maps</p>
+					</div>
+					<div class="single-todo">
+						<div class="checkbox unfinished"></div>
+						<p>Consolidate Information Sent to CCC</p>
+					</div>
+					<div class="single-todo">
+						<div class="checkbox unfinished"></div>
+						<p>Purchase second SIM card</p>
+					</div>
+					<div class="single-todo">
+						<div class="checkbox unfinished"></div>
+						<p>Continue testing Unit 1</p>
+					</div>
+				</div>
+				<hr />
+				<div class="footer">
+					<p>clear finished tasks</p>
+				</div>
+			</div>
+		</div>
+		<div class="project">
+			<div class="heading">
+				<p>STIGMERGY AND STATE SHARING</p>
+			</div>
+			<div class="project-content">
+				<div class="deadline-container">
+					<p class="deadline">27 February 2018 - Code Freeze</p>
+				</div>
+				<div class="deadline-container">
+					<p class="deadline">6 March 2018 - CAMEL II Field Test</p>
+				</div>
+				<hr />
+				<div class="todo-container">
+					<div class="single-todo">
+						<div class="checkbox unfinished"></div>
+						<p>Zoom-in and Zoom-out button for CCC Google Maps</p>
+					</div>
+					<div class="single-todo">
+						<div class="checkbox unfinished"></div>
+						<p>Consolidate Information Sent to CCC</p>
+					</div>
+					<div class="single-todo">
+						<div class="checkbox unfinished"></div>
+						<p>Purchase second SIM card</p>
+					</div>
+					<div class="single-todo">
+						<div class="checkbox unfinished"></div>
+						<p>Continue testing Unit 1</p>
+					</div>
+				</div>
+				<hr />
+				<div class="footer">
+					<p>clear finished tasks</p>
+				</div>
+			</div>
+		</div>
+		<div class="project">
+			<div class="heading">
+				<p>PIXAMON</p>
+			</div>
+			<div class="project-content">
+				<div class="deadline-container">
+					<p class="deadline">27 February 2018 - Code Freeze</p>
+				</div>
+				<div class="deadline-container">
+					<p class="deadline">6 March 2018 - CAMEL II Field Test</p>
+				</div>
+				<hr />
+				<div class="todo-container">
+					<div class="single-todo">
+						<div class="checkbox unfinished"></div>
+						<p>Zoom-in and Zoom-out button for CCC Google Maps</p>
+					</div>
+					<div class="single-todo">
+						<div class="checkbox unfinished"></div>
+						<p>Consolidate Information Sent to CCC</p>
+					</div>
+					<div class="single-todo">
+						<div class="checkbox unfinished"></div>
+						<p>Purchase second SIM card</p>
+					</div>
+					<div class="single-todo">
+						<div class="checkbox unfinished"></div>
+						<p>Continue testing Unit 1</p>
+					</div>
+				</div>
+				<hr />
+				<div class="footer">
+					<p>clear finished tasks</p>
+				</div>
+			</div>
+		</div>
+	</div>	
+
+	<div id="deadlines"></div>
+
+	<script src="index.js"></script>
+
+</body>
+
+</html>

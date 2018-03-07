@@ -1,0 +1,55 @@
+div.single-todo {
+	padding-left: 25px;
+	position: relative;
+	height: 30px;
+
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+
+div.checkbox {
+	height: 12px;
+	width: 12px;
+	border-radius: 100%;
+	border: 1px solid black;
+	position: absolute;
+	top: calc(50% - 6px);
+	left: 5px;
+
+	background: rbga(0,0,0,0.0);
+}
+div.checkbox:hover {
+	background: rgba(50,50,50,0.2);
+	cursor: pointer;
+}
+div.checkbox.done {
+	/*background: rgba(50,50,50,0.7);*/
+	background: rgb(204,0,0);
+}
+div.checkbox.done + p {
+	text-decoration: line-through;
+	color: rgba(50,50,50,0.5);
+}
+
+div.single-todo p {
+	font-family: sans-serif;
+	position: relative;
+	/*top: 50%;*/
+	top: 6px;
+	/*transform: translate(0%, -50%);*/
+	margin: 0;
+	font-size: 11pt;
+}
+
+input[type=text].edit_p {
+	height: 100%;
+	width: 100%;
+	padding-left: 1%;
+	background: rgba(255,255,255,1);
+	border: none;
+	/*border-bottom: 1px solid rgba(255,255,255,0.2);*/
+	font-size: 11pt;
+}
+input[type=text].edit_p:focus {
+	outline: none;
+}

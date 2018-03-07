@@ -1,0 +1,86 @@
+div.project {
+	padding-top: 70px;
+	transition: top 0.5s, box-shadow 0.5s;
+	position: relative;
+	top: 0;
+	/*height: 0px;*/
+	overflow-y: hidden;
+	margin-bottom: 4%;
+}
+
+div.project:hover, div.project.active {
+	box-shadow: 2px 2px 16px rgba(0,0,0,0.5);
+	top: -5px;
+}
+
+div.heading {
+	width: 100%;
+	height: 70px;
+	background: rgb(204,0,0);
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+div.heading p {
+	font-size: 24px;
+	font-family: sans-serif;
+	text-align: center;
+	margin: 0;
+	position: absolute; 
+	width: 100%;
+	top: 50%;
+	transform: translate(0, -50%);
+	font-weight: bold;
+	color: white;
+}
+
+div.project-content {
+	padding-left: 1%;
+	padding-right: 1%;
+	/*padding-top: 10px;*/
+	background: rgba(204,0,0,0.1);
+	height: auto;
+	max-height: 0;
+	transition: max-height 1.0s;
+	/*border-right: 5px solid rgb(204,0,0);*/
+	/*overflow-y: scroll;*/ /* TODO - make this look decent */
+}
+div.project:hover div.project-content, div.project.active div.project-content {
+	max-height: 400px;
+}
+
+/* ---- Deadlines ---- */
+
+div.project div.deadline-container {
+	width: 80%;
+	position: relative; 
+	left: 10%;
+	padding-top: 5px;
+}
+div.deadline-container p {
+	text-align: center;
+}
+
+div.project hr {
+	border-style: none;
+	border: 0.5px solid rgb(50,50,50);
+	width: 60%;
+	position: relative;
+	margin-top: 3%;
+	margin-bottom: 3%;
+}
+
+/* ---- Footer ---- */
+
+div.footer p {
+	color: rgb(100,100,100);
+	font-size: 10px;
+	text-align: center;
+	text-decoration: none;
+}
+div.footer p:hover {
+	color: rgb(0,0,0);
+	text-decoration: underline;
+	cursor: pointer;
+}
