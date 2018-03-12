@@ -32,7 +32,6 @@ div.checkbox.done + p {
 }
 
 div.single-todo p {
-	font-family: sans-serif;
 	position: relative;
 	/*top: 50%;*/
 	top: 6px;

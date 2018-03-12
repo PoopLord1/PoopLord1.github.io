@@ -36,7 +36,7 @@ function wake_and_color_line(jobj) {
 	i = (i + 1) % len;
 
 	// and color the title just for funsies
-	$("p#title").attr("class", "").addClass(color);
+	$("div#main_div").attr("class", "").addClass(color);
 }
 // Changes the line's opacity and stroke-width to be 'normal' again.
 function sleep_line(jobj) {
