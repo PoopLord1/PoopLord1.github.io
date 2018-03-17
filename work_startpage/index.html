@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="style.css" />
 	<link rel="stylesheet" href="todo.css" />
 	<link rel="stylesheet" href="project.css" />
+	<link rel="stylesheet" href="calendar.css" />
 </head>
 
 <!-- Alright what do we even want here bro?
@@ -23,6 +24,12 @@
 	<div class="bodydiv">
 		<p id="time">12:27</p>
 		<p id="date">March 1st 2018</p>
+		<div id="calendar">
+			<div class="day ghost"></div>
+			<div class="day"></div>
+			<div class="day"></div>
+			<div class="day today"></div>
+		</div>
 		<div id="links">
 			<a href="https://outlook.office.com/owa/?realm=i-a-i.com&exsvurl=1&ll-cc=1033&modurl=0">
 				<p>Outlook Online</p>
@@ -160,6 +167,7 @@
 	<div id="deadlines"></div>
 
 	<script src="index.js"></script>
+	<script src="populate_calendar.js"></script>
 
 </body>
 
