@@ -11,6 +11,7 @@ function click_checkbox() {
 	});
 }
 
+
 // When you click on a p object (like project name or todo content) 
 // we pull up a text entry box (like an input) to edit the text.
 function change_to_input(jquery_obj) {
@@ -22,6 +23,7 @@ function change_to_input(jquery_obj) {
 	assign_handlers();
 }
 
+
 // When that text entry box loses focus, we change it back to a p 
 // node and overwrite the saved todos to localStorage.
 function change_to_p(jquery_obj) {
@@ -31,6 +33,7 @@ function change_to_p(jquery_obj) {
 	parent.append("<p>" + text + "</p>");
 	assign_handlers();
 }
+
 
 // Removes and re-assigns all event handlers for p objects and input objects
 function assign_handlers() {
@@ -45,6 +48,7 @@ function assign_handlers() {
 	});
 }
 
+
 // When you click on a project, set it as the active project.
 function click_project() {
 	$(".project").off();
@@ -54,6 +58,7 @@ function click_project() {
 	});
 }
 
+
 // When the user clicks on the negative space, the active project is removed.
 function remove_active_project() {
 	$("#bg").click(function() {
@@ -61,7 +66,48 @@ function remove_active_project() {
 	});
 }
 
+
+// Periodically update the time and date elements
+var num_to_month = {0: "January", 1: "February", 2: "March", 3: "April", 4: "May", 5: "June", 6: "July", 7: "August", 8: "September", 9: "October", 10: "November", 11: "December"};
+function update_date_and_time() {
+	var date_obj = new Date();
+	var hours_num = date_obj.getHours() % 12;
+	if (hours_num == 0) {
+		hours_num = 12;
+	}
+	var minutes_num = date_obj.getMinutes();
+
+	var hours_string = hours_num.toString();
+	var minutes_string = minutes_num.toString();
+	if (minutes_string.length == 1) {
+		minutes_string = "0" + minutes_string;
+	}
+
+	time_string = hours_string + ":" + minutes_string;
+	$("#time").html(time_string);
+
+	var month_string = num_to_month[date_obj.getMonth()];
+	var year_string = date_obj.getFullYear();
+	var date_num = date_obj.getDate();
+
+	var date_ending = "";
+	if (date_num == 1 || date_num == 21 || date_num == 31) {
+		date_ending = "st";
+	} else if (date_num == 2 || date_num == 22) {
+		date_ending = "nd";
+	} else if (date_num == 3 || date_num == 23) {
+		date_ending = "rd";
+	} else {
+		date_ending = "th";
+	}
+	var date_string = date_num + date_ending;
+
+	$("#date").html(month_string + " " + date_string + " " + year_string);
+}
+
 remove_active_project();
 click_project();
 click_checkbox();
 assign_handlers();
+update_date_and_time();
+setInterval(update_date_and_time, 30000);
