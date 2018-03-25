@@ -44,7 +44,7 @@ input[type=text].edit_p {
 	height: 100%;
 	width: 100%;
 	padding-left: 1%;
-	background: rgba(255,255,255,1);
+	background: rgba(255,255,255,0.6);
 	border: none;
 	/*border-bottom: 1px solid rgba(255,255,255,0.2);*/
 	font-size: 11pt;
