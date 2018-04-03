@@ -3,7 +3,7 @@ var svg_height = 24.0;
 var svg_width = 24.0;
 function generate_lines() {
 	for (var coord_x = 0; coord_x < 80; coord_x++) {
-		for (var coord_y = 0; coord_y < 42; coord_y++) {
+		for (var coord_y = 0; coord_y < 17; coord_y++) {
 
 			var x = coord_x * svg_width;
 			var y = coord_y * svg_height;
@@ -38,7 +38,8 @@ function wake_and_color_line(jobj) {
 	i = (i + 1) % len;
 
 	// and color the title just for funsies
-	$("div#main_div").attr("class", "").addClass(color);
+	$("p#title").attr("class", "").addClass(color);
+	$("div#slanted_bg").attr("class", "").addClass(color);
 }
 // Changes the line's opacity and stroke-width to be 'normal' again.
 function sleep_line(jobj) {
@@ -52,7 +53,7 @@ function uncolor_line(jobj) {
 }
 
 function create_line_noise() {
-	var avg_ms_for_line_wake = 1000; // 1500 was nice and relaxed
+	var avg_ms_for_line_wake = 3000; // 1500 was nice and relaxed
 	var batch_size = 30;
 	var noise_in_timing = 400;
 	
@@ -77,4 +78,4 @@ function create_line_noise() {
 }
 
 generate_lines();
-// create_line_noise();
+create_line_noise();
