@@ -1,17 +1,19 @@
 // Generates all the lines for our svg background
+var svg_height = 24.0;
+var svg_width = 24.0;
 function generate_lines() {
-	for (var coord_x = 0; coord_x < 64; coord_x++) {
-		for (var coord_y = 0; coord_y < 36; coord_y++) {
+	for (var coord_x = 0; coord_x < 80; coord_x++) {
+		for (var coord_y = 0; coord_y < 42; coord_y++) {
 
-			var x = coord_x * 30;
-			var y = coord_y * 30;
+			var x = coord_x * svg_width;
+			var y = coord_y * svg_height;
 			var pol = ((coord_x + coord_y) % 2) * 2 - 1;
 
 			var lobj = document.createElementNS("http://www.w3.org/2000/svg", "line");    // Create with DOM
 			lobj.setAttribute("x1", x);
-			lobj.setAttribute("y1", y - pol*12);
-			lobj.setAttribute("x2", x + 24);
-			lobj.setAttribute("y2", y + pol*12);
+			lobj.setAttribute("y1", y - pol*0.5*(svg_height-6));
+			lobj.setAttribute("x2", x + svg_width - 6.0);
+			lobj.setAttribute("y2", y + pol*0.5*(svg_height-6));
 			lobj.setAttribute("class", "invis");
 			// lobj.setAttribute("class", "dormant");
 		    $("#outer").append(lobj);
@@ -75,4 +77,4 @@ function create_line_noise() {
 }
 
 generate_lines();
-create_line_noise();
+// create_line_noise();

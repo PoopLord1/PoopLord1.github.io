@@ -32,7 +32,7 @@ p#title {
 	text-align: center;
 	font-size: 16pt;
 	letter-spacing: 3px;
-	/*text-shadow: 0px 0px 10px rgb(127,255,0);*/
+	text-shadow: 0px 0px 10px rgb(0,0,0);
 	z-index: 1;
 }
 
@@ -52,7 +52,7 @@ svg line {
 	opacity: 1;
 }
 line.pink {
-	stroke: rgb(255,105,180);
+	stroke: rgb(255,125,190);
 }
 line.white {
 	stroke: rgb(255,255,255);
@@ -70,9 +70,48 @@ line.awake {
 }
 
 svg > line.dormant {
-	opacity: 0.1;
+	opacity: 0.05;
 	stroke-width: 1;
 }
 svg > line.invis {
 	opacity: 0.0;
 }
+
+
+/* Anything after this point will likely be gross */
+
+div.content {
+	position: fixed;
+	top: 65%;
+	width: 10%;
+	height: 15%;
+	padding-left: 20px;
+}
+div#usr {
+	left: 15%;
+	background: rgba(127,255,0,0.05);
+	border-left: 2px solid rgb(127,255,0);
+}
+div#home {
+	left: 30%;
+	background: rgba(255,125,190,0.05);
+	border-left: 2px solid rgb(255,125,190);	
+}
+
+h3 {
+	font-family: 'Share Tech Mono', monospace;
+	color: white;
+}
+a {
+	font-family: 'Share Tech Mono', monospace;
+	text-decoration: none;
+	color: white;
+	display: block;
+}
+a:after {
+	content: '';
+}
+a:hover:after {
+	content: ' -';
+}
+
