@@ -1,3 +1,44 @@
+// Saves the TODOs information we have stored. 
+function save_todos() {
+	// Grab all the project elements 
+	var projects = document.getElementsByClassName("project");
+	var project_info = {}; // {"CAMEL": {"todos": [...], "deadlines": [...]}, ...}
+
+	// For each project, grab the name, todos, and deadlines
+	for (var i=0; i < projects.length; i++) {
+		var name = $(projects[i]).find("div.heading p").html();
+		project_names.push(name);
+
+		// Find all the deadline text for this project
+		var deadline_objs = $(projects[i]).find("p.deadline").toArray();
+		var deadlines = [];
+		for (var j=0; j < deadline_objs.length; j++) {
+			deadlines.push(deadline_objs[j].innerHTML);
+		}
+
+		// Find todo information for this project
+		var todos_objs = $(projects[i]).find("div.single-todo p").toArray();
+		var todos = [];
+		for (var j=0; j < todos_objs.length; j++) {
+			todos.push(todos_objs[j].innerHTML);
+		}
+
+		// Combine it all and add it to our project_info object
+		project_info[name] = {};
+		project_info[name]["todos"] = todos;
+		project_info[name]["deadlines"] = deadlines;
+	}
+
+	// And finally store in local storage
+	localStorage.setItem("project_info", JSON.stringify(project_info));
+}
+
+
+// Load TODO and deadline information from local storage
+function load_todos() {
+	return; // TODO lmao
+}
+
 // When you click on a checkbox, the checkbox becomes filled
 function click_checkbox() {
 	$("div.checkbox").click(function() {
@@ -32,6 +73,7 @@ function change_to_p(jquery_obj) {
 	var p_node = jquery_obj.remove();
 	parent.append("<p>" + text + "</p>");
 	assign_handlers();
+	save_todos();
 }
 
 
