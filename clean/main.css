@@ -1,0 +1,24 @@
+body {
+	margin: 0;
+	background-color: rgb(176, 196, 222);
+}
+
+p {
+	color: rgb(222,217,176);
+}
+
+div#links {
+	color: rgb(222,176,186);
+	font-family: "Mr Dafoe", cursive, serif;
+	text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+
+	position: fixed;
+	top: 20%;
+	left: 70%;
+	font-size: 30pt;
+	letter-spacing: 5px;
+}
+
+div#links * {
+	transform: rotate(-20deg);
+}
