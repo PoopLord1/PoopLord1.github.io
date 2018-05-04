@@ -1,6 +1,23 @@
 body {
 	margin: 0;
-	background-color: rgb(176, 196, 222);
+	/*background-color: rgb(176, 196, 222);*/
+	/*background-color: rgb(15,15,15);*/
+    background-image: url("imgs/bg.jpg");
+    background-repeat: repeat;    
+}
+body:after {
+	content: '';
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.7);
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 0;
+}
+
+* {
+	z-index: 1;
 }
 
 p {
@@ -8,17 +25,37 @@ p {
 }
 
 div#links {
-	color: rgb(222,176,186);
 	font-family: "Mr Dafoe", cursive, serif;
 	text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
 
 	position: fixed;
 	top: 20%;
-	left: 70%;
-	font-size: 30pt;
+	left: 50%;
+	font-size: 24pt;
 	letter-spacing: 5px;
 }
 
-div#links * {
-	transform: rotate(-20deg);
+div#links h1 {
+	/*color: rgb(222,176,186);*/
+	color: rgb(255,255,255);
+	/*color: black;*/
+	transform: rotate(-15deg);
+	transition: color 0.25s;
+	font-weight: normal;
+}
+div#links h1:hover {
+	/*color: rgb(222,217,176);*/
+	/*text-shadow: 2px 2px 5px rgba(255,255,255,0.3), -2px -2px 5px rgba(255,255,255,0.3);*/
+	text-shadow: 2px 2px 5px rgba(255,255,255,0.5);
+}
+
+img {
+	position: fixed;
+	top: 50%;
+	left: 10%;
+	max-width: 30%;
+	max-height: 60%;
+	transform: translate(0, -50%);
+	box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+	border: 10px solid rgb(222,217,176);
 }

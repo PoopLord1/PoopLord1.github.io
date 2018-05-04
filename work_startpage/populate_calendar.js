@@ -1,7 +1,7 @@
 function populate_calendar() {
 	// Find the current month
 	var date_obj = new Date();
-	var month_i = date_obj.getMonth().toString();
+	var month_i = date_obj.getMonth().toString() + 1;
 	var year_i = date_obj.getFullYear().toString();
 	var day_in_month_i = date_obj.getDate();
 
