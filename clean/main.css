@@ -2,10 +2,10 @@ body {
 	margin: 0;
 	/*background-color: rgb(176, 196, 222);*/
 	/*background-color: rgb(15,15,15);*/
-    background-image: url("imgs/bg.jpg");
+    background-image: url("imgs/dark_bg.png");
     background-repeat: repeat;    
 }
-body:after {
+/*body:after {
 	content: '';
 	width: 100%;
 	height: 100%;
@@ -14,10 +14,10 @@ body:after {
 	top: 0;
 	left: 0;
 	z-index: 0;
-}
+}*/
 
 * {
-	z-index: 1;
+	/*z-index: 1;*/
 }
 
 p {
@@ -26,7 +26,7 @@ p {
 
 div#links {
 	font-family: "Mr Dafoe", cursive, serif;
-	text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+	/*text-shadow: 2px 2px 6px rgba(0,0,0,0.5);*/
 
 	position: fixed;
 	top: 20%;
@@ -42,11 +42,21 @@ div#links h1 {
 	transform: rotate(-15deg);
 	transition: color 0.25s;
 	font-weight: normal;
+	text-shadow: none;
+	transition: text-shadow 0.5s;
 }
 div#links h1:hover {
 	/*color: rgb(222,217,176);*/
 	/*text-shadow: 2px 2px 5px rgba(255,255,255,0.3), -2px -2px 5px rgba(255,255,255,0.3);*/
-	text-shadow: 2px 2px 5px rgba(255,255,255,0.5);
+	/*text-shadow: 2px 2px 5px rgba(255,255,255,0.5);*/
+	text-shadow:
+	    0 0 5px #fff,
+	    0 0 10px #fff,
+	    0 0 20px #fff,
+	    0 0 40px #0ff,
+	    0 0 80px #0ff,
+	    0 0 90px #0ff;
+
 }
 
 img {
@@ -58,4 +68,48 @@ img {
 	transform: translate(0, -50%);
 	box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
 	border: 10px solid rgb(222,217,176);
+}
+
+h2 {
+	font-family: "Mr Dafoe", cursive, serif;
+	position: fixed;
+	top: 10%;
+	left: 10%;
+	color: rgb(240,240,240);
+	font-weight: normal;
+}
+
+div#panel {
+	position: absolute;
+	width: 60%;
+	height: 60%;
+	top: 20%;
+	left: 20%;
+	background: rgba(200,200,200,0.3);
+	/*border: 10px solid rgb(240,240,240);*/
+	border-radius: 10px;
+	z-index: 1;
+}
+
+h1#greeting {
+	font-family: "Mr Dafoe", cursive, serif;
+	text-shadow:
+	    0 0 5px #7ff,
+	    0 0 10px #7ff,
+	    0 0 20px #000,
+	    0 0 40px #000,
+	    0 0 80px #000,
+	    0 0 90px #000;
+	/*text-shadow: 2px 2px 20px rgb(0,0,0);*/
+	font-weight: normal;
+	font-size: 44pt;
+	text-align: center;
+	transform: rotate(-15deg);
+	color: white;
+	display: inline-block;
+	z-index: 2;
+	position: fixed;
+	top: 12%;
+	left: 15%;
+	line-height: 85%;
 }
