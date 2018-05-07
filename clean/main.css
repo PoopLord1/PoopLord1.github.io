@@ -42,15 +42,16 @@ div#panel {
 }
 div#panel * { opacity: 100%; }
 
-div.half_content {
-	width: 44%;
+div.third_content {
+	width: 29%;
 	height: 80%;
 	position: absolute;
 	top: 10%;
-	background-color: rgba(255,0,0,0.1);
+	/*background-color: rgba(255,0,0,0.1);*/
 }
-div.half_content#left {	left: 5%; }
-div.half_content#right { right: 5%; }
+div.third_content#left { left: 5%; }
+div.third_content#center { left: 35%; }
+div.third_content#right { right: 5%; }
 hr#divider {
 	margin: 0;
 	border: none;
@@ -59,7 +60,7 @@ hr#divider {
 	top: 10%;
 	left: 50%;
 	width: 1px;
-	background-color: rgb(150,150,150);
+	background-color: rgb(255,255,255);
 	box-shadow:
 	    0 0 5px #7ff,
 	    0 0 10px #7ff,
@@ -67,4 +68,41 @@ hr#divider {
 	    0 0 40px #000,
 	    0 0 80px #000,
 	    0 0 90px #000;
+}
+
+div#panel a {
+	font-family: "Open Sans", 'Ubuntu';
+	color: rgb(255,255,255);
+	font-size: 11pt;
+	display: block;
+	margin: 4px;
+	text-decoration: none;
+	text-shadow: none;
+	transition: text-shadow 0.5s;
+	position: relative;
+	/*left: 50px;*/
+	text-align: center;
+}
+div#panel a:hover {
+	text-shadow:
+	    0 0 3px #7ff,
+	    0 0 6px #7ff,
+	    0 0 12px #000,
+	    0 0 24px #000,
+	    0 0 48px #000;
+}
+div#panel p {
+	font-family: 'Mr Dafoe';
+	color: rgb(255,255,255);
+	font-size: 24pt;
+	display: block;
+	margin: 10px;
+	margin-bottom: -5px;
+	text-decoration: none;
+	letter-spacing: 2px;
+	font-style: none;
+	text-shadow:
+		0 0 10px #7ff;
+	transition: text-shadow 0.5s;
+	text-align: center;
 }

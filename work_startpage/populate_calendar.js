@@ -1,12 +1,12 @@
 function populate_calendar() {
 	// Find the current month
 	var date_obj = new Date();
-	var month_i = date_obj.getMonth().toString() + 1;
+	var month_i = date_obj.getMonth().toString();
 	var year_i = date_obj.getFullYear().toString();
 	var day_in_month_i = date_obj.getDate();
 
 	// Find the day of the week the current month starts on
-	var first_date_obj = new Date(year_i + "-" + month_i + "-01");
+	var first_date_obj = new Date(year_i, month_i, 1);
 	var first_weekday_num = first_date_obj.getDay();
 
 	// Populate with the appropriate number of "ghost" days
