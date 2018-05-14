@@ -1,0 +1,20 @@
+div#calendar {
+	/*background-color: rgba(255,0,0,0.1);*/
+	display: grid;
+
+	grid-template-columns: repeat(7, 12%);
+	grid-template-rows: repeat(5, 17%);
+	grid-gap: 5px 5px;
+}
+
+div.day {
+	background: rgb(240,240,240);
+	opacity: 0.7;
+}
+div.day.ghost {
+	background: transparent;
+}
+div.day.today {
+	background: transparent;
+	box-shadow: inset 3px 3px 0px rgb(240,240,240), inset -3px -3px 0px rgb(240,240,240);
+}

@@ -4,6 +4,8 @@
 	<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="main.css" />
+	<link rel="stylesheet" href="calendar.css" />
+	<script src="jquery-2.2.2.js"></script>
 </head>
 
 <body>
@@ -19,37 +21,49 @@
 	-->
 
 	<div id="panel">
-		<div class="third_content" id="left">
-			<p>Media</p>
-			<a href="http://www.trello.com">Youtube</a>
-			<a href="http://www.trello.com">Netflix</a>
-			<a href="http://www.trello.com">Twitch</a>
-			<p>Reddit</p>
-			<a href="http://www.trello.com">/r/YoutubeHaiku</a>
-			<a href="http://www.trello.com">/r/me_irl</a>
-			<a href="http://www.trello.com">/r/Starcraft</a>
-			<a href="http://www.trello.com">/r/Warframe</a>
-			<a href="http://www.trello.com">/r/all</a>
-			<a href="http://www.trello.com">Reddit Front Page</a>
-			<p>Social Media</p>
-			<a href="http://www.trello.com">Facebook</a>
-			<a href="http://www.trello.com">Messenger</a>
-			<a href="http://www.trello.com">Google Mail</a>
-		</div>
-		<div class="third_content" id="center">
-			<p>Development</p>
-			<a href="http://www.trello.com">Trello</a>
-			<a href="http://www.trello.com">Github</a>
-			<p>Intelligent Automation</p>
-			<a href="http://www.trello.com">Outlook</a>
-			<a href="http://www.trello.com">Costpoint</a>
-			<a href="http://www.trello.com">IAI VPN</a>
-			<div id="calendar"></div>
-		</div>
-		<div class="third_content" id="right">
+		<div class="subpanel shown">
+			<div class="content_panel" id="center">
+				<p>Media</p>
+				<a href="http://www.trello.com">Youtube</a>
+				<a href="http://www.trello.com">Netflix</a>
+				<a href="http://www.trello.com">Twitch</a>
+				<p>Reddit</p>
+				<a href="http://www.trello.com">Reddit Home</a>
+				<a href="http://www.trello.com">/r/all</a>
+				<a href="http://www.trello.com">/r/YoutubeHaiku</a>
+				<a href="http://www.trello.com">/r/me_irl</a>
+				<a href="http://www.trello.com">/r/Starcraft</a>
+				<a href="http://www.trello.com">/r/Warframe</a>
+				<a href="http://www.trello.com">/r/4chan</a>
+				<a href="http://www.trello.com">/r/Judo</a>
+				<p>Social Media</p>
+				<a href="http://www.trello.com">Facebook</a>
+				<a href="http://www.trello.com">Messenger</a>
+				<a href="http://www.trello.com">Google Mail</a>
+			</div>
+			<div class="content_panel" id="right">
+				<p>Development</p>
+				<a href="http://www.trello.com">Trello</a>
+				<a href="http://www.trello.com">Github</a>
+				<a href="http://www.trello.com">DigitalOcean</a>
+				<a href="http://www.trello.com">CodeMyUI</a>
+				<a href="http://www.trello.com">LearnXinYMinutes</a>
+				<p>Intelligent Automation</p>
+				<a href="http://www.trello.com">Outlook</a>
+				<a href="http://www.trello.com">Costpoint</a>
+				<a href="http://www.trello.com">IAI VPN</a>
+				<a href="http://www.trello.com">IAI Homepage</a>
+				<p>4chan</p>
+				<a href="http://www.trello.com">/b/</a>
+				<a href="http://www.trello.com">/wg/</a>
+				<a href="http://www.trello.com">/pol/</a>
+			</div>
+<!-- 			<div class="content_panel" id="right">
+			</div> -->
 		</div>
 	</div>
 
+	<script src="populate_calendar.js"></script>
 
 </body>
 
