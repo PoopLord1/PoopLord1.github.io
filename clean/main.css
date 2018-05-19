@@ -42,13 +42,12 @@ div#panel {
 }
 div#panel * { opacity: 100%; }
 
-div.content_panel {
+/*div.content_panel {
 	width: 24%;
 	height: 80%;
 	position: absolute;
 	top: 10%;
-	/*background-color: rgba(255,0,0,0.1);*/
-}
+}*/
 
 div.subpanel {
 	position: absolute;
@@ -56,6 +55,8 @@ div.subpanel {
 	left: 0;
 	width: 100%;
 	height: 100%;
+	padding-top: 5%;
+	column-count: 4;
 }
 div.hidden {
 	opacity: 0;
@@ -63,10 +64,13 @@ div.hidden {
 div.shown {
 	opacity: 1.0;
 }
+div.subpanel div {
+	break-inside: avoid;
+}
 
-div.content_panel#left { left: 5%; }
+/*div.content_panel#left { left: 5%; }
 div.content_panel#center { right: 30%; }
-div.content_panel#right { right: 5%; }
+div.content_panel#right { right: 5%; }*/
 hr#divider {
 	margin: 0;
 	border: none;
@@ -89,7 +93,7 @@ hr#divider {
 div#panel a {
 	font-family: "Open Sans", 'Ubuntu';
 	color: rgb(255,255,255);
-	font-size: 9pt;
+	font-size: 11pt;
 	display: block;
 	margin: 4px;
 	text-decoration: none;
@@ -107,7 +111,7 @@ div#panel a:hover {
 div#panel p {
 	font-family: 'Mr Dafoe';
 	color: rgb(255,255,255);
-	font-size: 18pt;
+	font-size: 20pt;
 	display: block;
 	margin: 10px;
 	margin-bottom: -5px;
@@ -119,6 +123,8 @@ div#panel p {
 	transition: text-shadow 0.5s;
 	text-align: center;
 }
+/*div#panel p:before {content: '- ';}
+div#panel p:after {content: ' -';}*/
 
 div#calendar {
 	width: 70%;
