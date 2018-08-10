@@ -7,7 +7,7 @@ var cs = ["rgb(182,181,193)", "rgb(166,187,178)", "rgb(195,194,165)", "rgb(204,1
 var index = Math.floor(Math.random()*pics.length);
 var img = "images/" + pics[index];
 var color = cs[index];
-document.styleSheets[0].addRule("#cinemagraph:before, #cinemagraph:after", "border-color: "+"white"+";", 18);
+// document.styleSheets[0].addRule("#cinemagraph:before, #cinemagraph:after", "border-color: white;", 0);
 $("#background").attr("src", img);
 $("#cinemagraph > img").attr("src", img);
 
