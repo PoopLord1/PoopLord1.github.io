@@ -111,13 +111,20 @@ function remove_active_project() {
 
 // Periodically update the time and date elements
 var num_to_month = {0: "January", 1: "February", 2: "March", 3: "April", 4: "May", 5: "June", 6: "July", 7: "August", 8: "September", 9: "October", 10: "November", 11: "December"};
+var num_to_weekday = {0: "Sunday", 1: "Monday", 2: "Tuesday", 3: "Wednesday", 4: "Thursday", 5: "Friday", 6: "Saturday"};
 function update_date_and_time() {
 	var date_obj = new Date();
-	var hours_num = date_obj.getHours() % 12;
+	var hours_num = date_obj.getHours();
+	var ampm = "AM";
+
 	if (hours_num == 0) {
 		hours_num = 12;
 	}
 	var minutes_num = date_obj.getMinutes();
+	if (hours_num >= 12) {
+		ampm = "PM";
+	}
+	hours_num = hours_num % 12;
 
 	var hours_string = hours_num.toString();
 	var minutes_string = minutes_num.toString();
@@ -125,12 +132,14 @@ function update_date_and_time() {
 		minutes_string = "0" + minutes_string;
 	}
 
-	time_string = hours_string + ":" + minutes_string;
+	time_string = hours_string + ":" + minutes_string + " " + ampm;
 	$("#time").html(time_string);
 
 	var month_string = num_to_month[date_obj.getMonth()];
 	var year_string = date_obj.getFullYear();
 	var date_num = date_obj.getDate();
+	var weekday_num = date_obj.getDay();
+	var weekday = num_to_weekday[weekday_num];
 
 	var date_ending = "";
 	if (date_num == 1 || date_num == 21 || date_num == 31) {
@@ -144,7 +153,7 @@ function update_date_and_time() {
 	}
 	var date_string = date_num + date_ending;
 
-	$("#date").html(month_string + " " + date_string + " " + year_string);
+	$("#date").html(weekday + ", " + month_string + " " + date_string);
 }
 
 remove_active_project();
