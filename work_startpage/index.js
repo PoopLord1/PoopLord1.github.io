@@ -106,6 +106,9 @@ function remove_active_project() {
 	$("#bg").click(function() {
 		$(".project").removeClass("active");
 	});
+	// $(".project").mouseout(function() {
+	// 	$("this").removeClass("active");
+	// });
 }
 
 
@@ -117,6 +120,7 @@ function update_date_and_time() {
 	var hours_num = date_obj.getHours();
 	var ampm = "AM";
 
+	hours_num = hours_num % 12;
 	if (hours_num == 0) {
 		hours_num = 12;
 	}
@@ -124,7 +128,6 @@ function update_date_and_time() {
 	if (hours_num >= 12) {
 		ampm = "PM";
 	}
-	hours_num = hours_num % 12;
 
 	var hours_string = hours_num.toString();
 	var minutes_string = minutes_num.toString();
