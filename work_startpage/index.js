@@ -39,6 +39,31 @@ function load_todos() {
 	return; // TODO lmao
 }
 
+
+// Re-count the number of active action items for the given project (project expressed as a jquery object)
+function refresh_action_items(jquery_obj) {
+	var action_items_p = $(jquery_obj).find("div.heading").find("p.subtitle").first();
+
+	var num_unfinished_todos = $(jquery_obj).find("div.project-content div.single-todo div.unfinished").size();
+	console.log("num unfinished: " + num_unfinished_todos);
+
+	if (num_unfinished_todos != 1) {
+		action_items_p.html(num_unfinished_todos + " action items");
+	} else {
+		action_items_p.html(num_unfinished_todos + " action item");
+	}
+}
+
+
+// Refreshes the action item text for all projects
+function refresh_all_action_items() {
+	console.log("now refreshing");
+	$("div#projects div.project").each( function() {
+		refresh_action_items(this);
+	});
+}
+
+
 // When you click on a checkbox, the checkbox becomes filled
 function click_checkbox() {
 	$("div.checkbox").click(function() {
@@ -49,6 +74,7 @@ function click_checkbox() {
 			$(this).removeClass("unfinished");
 			$(this).addClass("done");	
 		}
+		refresh_action_items($(this).parent().parent().parent());
 	});
 }
 
@@ -106,9 +132,6 @@ function remove_active_project() {
 	$("#bg").click(function() {
 		$(".project").removeClass("active");
 	});
-	// $(".project").mouseout(function() {
-	// 	$("this").removeClass("active");
-	// });
 }
 
 
@@ -120,14 +143,15 @@ function update_date_and_time() {
 	var hours_num = date_obj.getHours();
 	var ampm = "AM";
 
+	if (hours_num >= 12) {
+		ampm = "PM";
+	}
 	hours_num = hours_num % 12;
 	if (hours_num == 0) {
 		hours_num = 12;
 	}
+
 	var minutes_num = date_obj.getMinutes();
-	if (hours_num >= 12) {
-		ampm = "PM";
-	}
 
 	var hours_string = hours_num.toString();
 	var minutes_string = minutes_num.toString();
@@ -164,4 +188,5 @@ click_project();
 click_checkbox();
 assign_handlers();
 update_date_and_time();
+refresh_all_action_items();
 setInterval(update_date_and_time, 30000);

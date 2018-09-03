@@ -4,24 +4,15 @@ div.project {
 	top: 0;
 	/*height: 0px;*/
 	overflow-y: hidden;
-	overflow-x: hidden;
 	margin-bottom: 20px;
 	opacity: 0.8;
-	height: 50px;
+	height: auto;
 	/*background-color: rgba(255,0,0,0.1);*/
 	border-radius: 5px;
 	box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
-	transition: height 1.0s, background 1.0s, box-shadow 1.0s;
-}
-div.project p {
-	color: white;
-}
-div.project img {
-	position: absolute;
-	width: 120%;
-	top: -10%;
-	left: -10%;
-	filter: blur(10px);
+	/*transition: max-height 1.0s, background 1.0s, box-shadow 1.0s;*/
+	padding: 10px;
+	padding-left: 30px;
 }
 
 div.project:hover, div.project.active {
@@ -29,7 +20,7 @@ div.project:hover, div.project.active {
 	top: -5px;
 	opacity: 1.0;
 	background: #ffffff;
-	height: 100%;
+	height: auto;
 	max-height: 85%;
 }
 
@@ -37,13 +28,12 @@ div.heading {
 	width: 100%;
 	/*background: rgb(204,0,0);*/
 	/*background: white;*/
-	position: absolute;
+	/*position: absolute;*/
 	top: 0;
 	left: 0;
 	overflow-y: inherit;
 	overflow-x: hidden;
-	padding: 10px;
-	padding-left: 30px;
+
 }
 
 div.heading p.title {
@@ -61,10 +51,8 @@ div.heading p.subtitle {
 }
 
 div.project-content {
-	padding-left: 1%;
-	padding-right: 1%;
 	/*padding-top: 10px;*/
-	background: rgba(204,0,0,0.1);
+	/*background: rgba(204,0,0,0.1);*/
 	height: auto;
 	max-height: 0;
 	transition: max-height 1.0s;
@@ -73,39 +61,4 @@ div.project-content {
 }
 div.project.active div.project-content {
 	max-height: 400px;
-}
-
-/* ---- Deadlines ---- */
-
-div.project div.deadline-container {
-	width: 80%;
-	position: relative; 
-	left: 10%;
-	padding-top: 5px;
-}
-div.deadline-container p {
-	text-align: center;
-}
-
-div.project hr {
-	border-style: none;
-	border: 0.5px solid rgb(255,255,255);
-	width: 60%;
-	position: relative;
-	margin-top: 3%;
-	margin-bottom: 3%;
-}
-
-/* ---- Footer ---- */
-
-div.footer p {
-	color: rgb(255,255,255);
-	font-size: 10px;
-	text-align: center;
-	text-decoration: none;
-}
-div.footer p:hover {
-	color: rgb(255,255,255);
-	text-decoration: underline;
-	cursor: pointer;
 }
