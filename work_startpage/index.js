@@ -14,6 +14,7 @@ function save_projects() {
 			var todo_dict = {};
 
 			var todo_text = $(this).find("p").first().html();
+			console.log("todo_text: " + todo_text);
 			todo_dict["text"] = todo_text;
 
 			var todo_status = $(this).find("div.checkbox").first().hasClass("done") ? true : false;
@@ -36,7 +37,73 @@ function save_projects() {
 // Load TODO and deadline information from local storage
 function load_projects() {
 	var read_string = localStorage.getItem("project_info");
-	console.log(read_string);
+	var projects_obj = JSON.parse(read_string);
+
+	// For each project in the JSON object,
+	for (var project in projects_obj) {
+
+		// Generate the overarching project node
+		var project_node = document.createElement("div");
+		project_node.className = "project";
+
+		// And then the title and sub-title
+		var heading_node = document.createElement("div");
+		heading_node.className = "heading";
+
+		var title_node = document.createElement("p");
+		title_node.className = "title";
+		
+		var title_text = document.createTextNode(project);
+		title_node.appendChild(title_text);
+		
+		var subtitle_node = document.createElement("p");
+		subtitle_node.className = "subtitle";
+
+		heading_node.appendChild(title_node);
+		heading_node.appendChild(subtitle_node);
+		project_node.appendChild(heading_node);
+
+		// Create the project content
+		var project_content_node = document.createElement("div");
+		project_content_node.className = "project-content";
+
+		// Then grab every todo and its status
+		var todo_list = projects_obj[project]["todos"];
+		console.log(todo_list);
+		for (var todo in todo_list) {
+			console.log("Here's one todo:");
+			console.log(todo);
+			var single_todo_node = document.createElement("div");
+			single_todo_node.className = "single-todo";
+
+			var checkbox_node = document.createElement("div");
+			checkbox_node.className = todo_list[todo]["status"] ? "checkbox done" : "checkbox unfinished";
+
+			var text_node = document.createElement("p");
+			var text_text = document.createTextNode(todo_list[todo]["text"]);
+			text_node.appendChild(text_text);
+
+			single_todo_node.appendChild(checkbox_node);
+			single_todo_node.appendChild(text_node);
+
+			project_content_node.appendChild(single_todo_node);
+		}
+		
+		// Create the "Remove finished todos" text
+		var remove_finished_node = document.createElement("p");
+		remove_finished_node.className = "remove-done-todos";
+
+		var remove_finished_text = document.createTextNode("Remove all finished action items");
+		remove_finished_node.appendChild(remove_finished_text);
+		project_content_node.appendChild(remove_finished_node);
+
+		project_node.appendChild(project_content_node);
+
+
+		// And finally append the project to the actual page
+		document.getElementById("projects").appendChild(project_node);
+
+	}
 }
 
 
@@ -141,10 +208,7 @@ function delete_finished_todos(jquery_obj) {
 	jquery_obj.find("div.project-content div.single-todo div.done").parent().remove();
 	save_projects();
 }
-$("p.remove-done-todos").click(function() {
-	var project_obj = $(this).parent().parent();
-	delete_finished_todos(project_obj);
-});
+
 
 
 // Periodically update the time and date elements
@@ -196,6 +260,10 @@ function update_date_and_time() {
 }
 
 load_projects();
+$("p.remove-done-todos").click(function() {
+	var project_obj = $(this).parent().parent();
+	delete_finished_todos(project_obj);
+});
 remove_active_project();
 click_project();
 click_checkbox();
