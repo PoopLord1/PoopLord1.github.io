@@ -62,3 +62,14 @@ div.project-content {
 div.project.active div.project-content {
 	max-height: 400px;
 }
+
+/*Remove finished todo objects*/
+p.remove-done-todos {
+	width: 100%;
+	text-align:center;
+	font-size: 10pt;
+	font-style: italic;
+	text-decoration: underline;
+	opacity: 0.5;
+	cursor: pointer;
+}

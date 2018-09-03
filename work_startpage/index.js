@@ -1,42 +1,42 @@
 // Saves the TODOs information we have stored. 
-function save_todos() {
+function save_projects() {
 	// Grab all the project elements 
 	var projects = document.getElementsByClassName("project");
 	var project_info = {}; // {"CAMEL": {"todos": [...], "deadlines": [...]}, ...}
 
 	// For each project, grab the name, todos, and deadlines
 	for (var i=0; i < projects.length; i++) {
-		var name = $(projects[i]).find("div.heading p").html();
-		project_names.push(name);
-
-		// Find all the deadline text for this project
-		var deadline_objs = $(projects[i]).find("p.deadline").toArray();
-		var deadlines = [];
-		for (var j=0; j < deadline_objs.length; j++) {
-			deadlines.push(deadline_objs[j].innerHTML);
-		}
+		var name = $(projects[i]).find("div.heading p.title").html();
 
 		// Find todo information for this project
-		var todos_objs = $(projects[i]).find("div.single-todo p").toArray();
 		var todos = [];
-		for (var j=0; j < todos_objs.length; j++) {
-			todos.push(todos_objs[j].innerHTML);
-		}
+		var todos_objs = $(projects[i]).find("div.single-todo").each(function() {
+			var todo_dict = {};
+
+			var todo_text = $(this).find("p").first().html();
+			todo_dict["text"] = todo_text;
+
+			var todo_status = $(this).find("div.checkbox").first().hasClass("done") ? true : false;
+			todo_dict["status"] = todo_status;
+
+			todos.push(todo_dict);
+		});
 
 		// Combine it all and add it to our project_info object
 		project_info[name] = {};
 		project_info[name]["todos"] = todos;
-		project_info[name]["deadlines"] = deadlines;
 	}
 
 	// And finally store in local storage
+	console.log(JSON.stringify(project_info));
 	localStorage.setItem("project_info", JSON.stringify(project_info));
 }
 
 
 // Load TODO and deadline information from local storage
-function load_todos() {
-	return; // TODO lmao
+function load_projects() {
+	var read_string = localStorage.getItem("project_info");
+	console.log(read_string);
 }
 
 
@@ -75,6 +75,7 @@ function click_checkbox() {
 			$(this).addClass("done");	
 		}
 		refresh_action_items($(this).parent().parent().parent());
+		save_projects();
 	});
 }
 
@@ -99,14 +100,14 @@ function change_to_p(jquery_obj) {
 	var p_node = jquery_obj.remove();
 	parent.append("<p>" + text + "</p>");
 	assign_handlers();
-	save_todos();
+	save_projects();
 }
 
 
 // Removes and re-assigns all event handlers for p objects and input objects
 function assign_handlers() {
-	$(".project-content p").off();
-	$(".project-content p").click(function() {
+	$(".single-todo p").off();
+	$(".single-todo p").click(function() {
 		change_to_input($(this));
 	});
 
@@ -133,6 +134,17 @@ function remove_active_project() {
 		$(".project").removeClass("active");
 	});
 }
+
+
+// Deletes all finished todos in the given jquery object
+function delete_finished_todos(jquery_obj) {
+	jquery_obj.find("div.project-content div.single-todo div.done").parent().remove();
+	save_projects();
+}
+$("p.remove-done-todos").click(function() {
+	var project_obj = $(this).parent().parent();
+	delete_finished_todos(project_obj);
+});
 
 
 // Periodically update the time and date elements
@@ -183,6 +195,7 @@ function update_date_and_time() {
 	$("#date").html(weekday + ", " + month_string + " " + date_string);
 }
 
+load_projects();
 remove_active_project();
 click_project();
 click_checkbox();
