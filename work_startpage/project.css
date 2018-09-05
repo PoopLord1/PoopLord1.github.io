@@ -6,6 +6,7 @@ div.project {
 	overflow-y: hidden;
 	margin-bottom: 20px;
 	opacity: 0.8;
+	/*height: auto;*/
 	height: auto;
 	/*background-color: rgba(255,0,0,0.1);*/
 	border-radius: 5px;
@@ -33,7 +34,6 @@ div.heading {
 	left: 0;
 	overflow-y: inherit;
 	overflow-x: hidden;
-
 }
 
 div.heading p.title {
@@ -61,6 +61,30 @@ div.project-content {
 }
 div.project.active div.project-content {
 	max-height: 400px;
+}
+
+/* Add new TODO */
+div.add-todo {
+	height: 25px;
+	width: 25px;
+	position: relative;
+	left: 50%;
+	border: 2px solid rgb(50,50,50);
+	border-radius: 100%;
+	opacity: 0.5;
+	transition: opacity 0.5s;
+	cursor: pointer;
+}
+div.add-todo:hover {
+	opacity: 1.0;
+}
+div.add-todo img {
+	position: absolute;
+	top: 20%;
+	left: 20%;
+	height: 60%;
+	width: 60%;
+
 }
 
 /*Remove finished todo objects*/

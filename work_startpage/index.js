@@ -89,10 +89,17 @@ function load_projects() {
 			project_content_node.appendChild(single_todo_node);
 		}
 		
+		// Create the "new-todo" button
+		var add_todo_node = document.createElement("div");
+		add_todo_node.className = "add-todo";
+		var add_todo_img_node = document.createElement("img");
+		add_todo_img_node.src = "imgs/plus.png";
+		add_todo_node.appendChild(add_todo_img_node);
+		project_content_node.appendChild(add_todo_node);
+
 		// Create the "Remove finished todos" text
 		var remove_finished_node = document.createElement("p");
 		remove_finished_node.className = "remove-done-todos";
-
 		var remove_finished_text = document.createTextNode("Remove all finished action items");
 		remove_finished_node.appendChild(remove_finished_text);
 		project_content_node.appendChild(remove_finished_node);
@@ -182,8 +189,38 @@ function assign_handlers() {
 	$("input.edit_p").focusout(function() {
 		change_to_p($(this));
 	});
+	$("input.edit_p").keydown(function(event) {
+		if (event.which == 13) {
+			change_to_p($(this));
+		}
+	});
 }
 
+
+// Adds a new TODO when you click on the "add" button
+function add_todo(project_obj) {
+	var single_todo_node = document.createElement("div");
+	single_todo_node.className = "single-todo";
+
+	var checkbox_node = document.createElement("div");
+	checkbox_node.className = "checkbox unfinished";
+	single_todo_node.appendChild(checkbox_node);
+
+	var input_node = document.createElement("input");
+	input_node.type = "text";
+	input_node.className = "edit_p";
+	input_node.value = "";
+	single_todo_node.appendChild(input_node);
+
+	project_obj.find("div.project-content").prepend(single_todo_node);
+	assign_handlers();
+	project_obj.find("div.project-content div.single-todo input").first().focus();
+}
+function click_add_todo() {
+	$("div.add-todo").click(function() {
+		add_todo($(this).parent().parent());
+	});
+}
 
 // When you click on a project, set it as the active project.
 function click_project() {
@@ -217,8 +254,8 @@ var num_to_weekday = {0: "Sunday", 1: "Monday", 2: "Tuesday", 3: "Wednesday", 4:
 function update_date_and_time() {
 	var date_obj = new Date();
 	var hours_num = date_obj.getHours();
+	
 	var ampm = "AM";
-
 	if (hours_num >= 12) {
 		ampm = "PM";
 	}
@@ -267,6 +304,7 @@ $("p.remove-done-todos").click(function() {
 remove_active_project();
 click_project();
 click_checkbox();
+click_add_todo();
 assign_handlers();
 update_date_and_time();
 refresh_all_action_items();
