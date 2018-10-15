@@ -85,16 +85,18 @@ input#search {
 	left: 33%;
 	/*background-color: rgba(255,0,0,0.1);*/
 	border: none;
-	box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+	/*box-shadow: 2px 2px 5px rgba(0,0,0,0.5);*/
 	width: 60%;
 	font-size: 24pt;
 	padding: 10px;
+	background: none;
+	border-bottom: 2px solid rgb(50,50,50);
 }
 input#search::placeholder {
 	color: rgba(0,0,0,0.2);
 }
 input#search:focus {
-	box-shadow: 5px 5px 12px rgba(0,0,0,0.5);
+	/*box-shadow: 5px 5px 12px rgba(0,0,0,0.5);*/
 	outline: none;
 }
 

@@ -1,26 +1,26 @@
 div.project {
-	transition: top 0.25s, box-shadow 0.25s;
+	/*transition: top 0.25s, box-shadow 0.25s;*/
 	position: relative;
 	top: 0;
 	/*height: 0px;*/
 	overflow-y: hidden;
 	margin-bottom: 20px;
-	opacity: 0.8;
+	/*opacity: 0.8;*/
 	/*height: auto;*/
 	height: auto;
 	/*background-color: rgba(255,0,0,0.1);*/
-	border-radius: 5px;
-	box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+	/*border-radius: 5px;*/
+	/*box-shadow: 2px 2px 5px rgba(0,0,0,0.5);*/
 	/*transition: max-height 1.0s, background 1.0s, box-shadow 1.0s;*/
 	padding: 10px;
 	padding-left: 30px;
 }
 
 div.project:hover, div.project.active {
-	box-shadow: 2px 2px 10px rgba(0,0,0,1.0);
-	top: -5px;
+	/*box-shadow: 2px 2px 10px rgba(0,0,0,1.0);*/
+	/*top: -5px;*/
 	opacity: 1.0;
-	background: #ffffff;
+	/*background: #ffffff;*/
 	height: auto;
 	max-height: 85%;
 }
@@ -53,6 +53,7 @@ div.heading p.subtitle {
 div.project-content {
 	/*padding-top: 10px;*/
 	/*background: rgba(204,0,0,0.1);*/
+	margin-top: 5px;
 	height: auto;
 	max-height: 0;
 	transition: max-height 1.0s;
