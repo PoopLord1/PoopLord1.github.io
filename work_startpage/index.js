@@ -296,6 +296,15 @@ function update_date_and_time() {
 	$("#date").html(weekday + ", " + month_string + " " + date_string);
 }
 
+
+// When we press enter on the Google Search bar, send us to the appropriate search page.
+$("form#search-form").on("submit", function () {
+    var search_string = $("input#search").val();
+    var escaped_string = search_string.replace(" ", "%20");
+    window.location = "http://www.google.com/search?q=" + escaped_string;
+    return false;
+});
+
 load_projects();
 $("p.remove-done-todos").click(function() {
 	var project_obj = $(this).parent().parent();
