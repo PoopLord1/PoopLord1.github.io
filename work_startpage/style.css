@@ -22,9 +22,16 @@ p {
 }
 
 /* Date and Time Style */
-p#date, p#time {
+p#date, p#time, p#datetime {
 	position: fixed;
 	left: 7%;
+}
+
+p#datetime {
+	top: 12%;
+	left: 50%;
+	transform: translate(-50%, 0);
+	font-size: 18pt;
 }
 
 p#date {
@@ -82,14 +89,19 @@ div#links p {
 }
 
 /* Google Search */
-input#search {
+form#search-form {
+	padding: 10px;
 	position: fixed;
 	top: 28%;
 	left: 33%;
+	width: 60%;
+}
+input#search {
+	width: calc(100% - 10px);
+	height: 100%;
 	/*background-color: rgba(255,0,0,0.1);*/
 	border: none;
 	/*box-shadow: 2px 2px 5px rgba(0,0,0,0.5);*/
-	width: 60%;
 	font-size: 18pt;
 	padding: 10px;
 	background: none;

@@ -273,7 +273,7 @@ function update_date_and_time() {
 	}
 
 	time_string = hours_string + ":" + minutes_string + " " + ampm;
-	$("#time").html(time_string);
+	// $("#time").html(time_string);
 
 	var month_string = num_to_month[date_obj.getMonth()];
 	var year_string = date_obj.getFullYear();
@@ -293,7 +293,8 @@ function update_date_and_time() {
 	}
 	var date_string = date_num + date_ending;
 
-	$("#date").html(weekday + ", " + month_string + " " + date_string);
+	// $("#date").html(weekday + ", " + month_string + " " + date_string);
+	$("p#datetime").html(time_string + " on " + weekday + ", " + month_string + " " + date_string);
 }
 
 

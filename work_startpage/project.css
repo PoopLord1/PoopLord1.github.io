@@ -44,7 +44,7 @@ div.heading p.title {
 }
 div.heading p.subtitle {
 	position: absolute;
-	right: 60px;
+	right: 0px;
 	top: 12px;
 	color: rgb(20,20,20);
 	font-style: italic;
