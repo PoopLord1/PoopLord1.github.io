@@ -58,6 +58,7 @@ div.project-content {
 	max-height: 0;
 	transition: max-height 1.0s;
 	padding-left: 20px;
+	overflow: hidden;
 	/*border-right: 5px solid rgb(204,0,0);*/
 	/*overflow-y: scroll;*/ /* TODO - make this look decent */
 }
