@@ -89,21 +89,32 @@ function load_projects() {
 			project_content_node.appendChild(single_todo_node);
 		}
 		
+		// Create the icons-box div
+		var icon_box_node = document.createElement("div");
+		icon_box_node.className = "icon-box";
+
 		// Create the "new-todo" button
 		var add_todo_node = document.createElement("div");
-		add_todo_node.className = "add-todo";
+		add_todo_node.className = "icon";
 		var add_todo_img_node = document.createElement("img");
 		add_todo_img_node.src = "imgs/plus.png";
 		add_todo_node.appendChild(add_todo_img_node);
-		project_content_node.appendChild(add_todo_node);
+		icon_box_node.appendChild(add_todo_node);
 
 		// Create the "Remove finished todos" text
-		var remove_finished_node = document.createElement("p");
-		remove_finished_node.className = "remove-done-todos";
-		var remove_finished_text = document.createTextNode("Remove all finished action items");
-		remove_finished_node.appendChild(remove_finished_text);
-		project_content_node.appendChild(remove_finished_node);
+		var add_todo_node = document.createElement("div");
+		add_todo_node.className = "icon";
+		var add_todo_img_node = document.createElement("img");
+		add_todo_img_node.src = "imgs/brush.png";
+		add_todo_node.appendChild(add_todo_img_node);
+		icon_box_node.appendChild(add_todo_node);
+		// var remove_finished_node = document.createElement("p");
+		// remove_finished_node.className = "remove-done-todos";
+		// var remove_finished_text = document.createTextNode("Remove all finished action items");
+		// remove_finished_node.appendChild(remove_finished_text);
+		// project_content_node.appendChild(remove_finished_node);
 
+		project_content_node.appendChild(icon_box_node);
 		project_node.appendChild(project_content_node);
 
 
