@@ -253,7 +253,7 @@ function remove_active_project() {
 
 // Deletes all finished todos in the given jquery object
 function delete_finished_todos(jquery_obj) {
-	jquery_obj.find("div.project-content div.single-todo div.done").parent().remove();
+	jquery_obj.find("div.single-todo div.done").parent().remove();
 	save_projects();
 }
 
