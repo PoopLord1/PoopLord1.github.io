@@ -95,7 +95,7 @@ function load_projects() {
 
 		// Create the "new-todo" button
 		var add_todo_node = document.createElement("div");
-		add_todo_node.className = "icon";
+		add_todo_node.className = "icon add-todo";
 		var add_todo_img_node = document.createElement("img");
 		add_todo_img_node.src = "imgs/plus.png";
 		add_todo_node.appendChild(add_todo_img_node);
@@ -103,7 +103,7 @@ function load_projects() {
 
 		// Create the "Remove finished todos" text
 		var add_todo_node = document.createElement("div");
-		add_todo_node.className = "icon";
+		add_todo_node.className = "icon clean-todo";
 		var add_todo_img_node = document.createElement("img");
 		add_todo_img_node.src = "imgs/brush.png";
 		add_todo_node.appendChild(add_todo_img_node);
@@ -223,9 +223,9 @@ function add_todo(project_obj) {
 	input_node.value = "";
 	single_todo_node.appendChild(input_node);
 
-	project_obj.find("div.project-content").prepend(single_todo_node);
+	project_obj.prepend(single_todo_node);
 	assign_handlers();
-	project_obj.find("div.project-content div.single-todo input").first().focus();
+	project_obj.find("div.single-todo input").first().focus();
 }
 function click_add_todo() {
 	$("div.add-todo").click(function() {
@@ -318,7 +318,7 @@ $("form#search-form").on("submit", function () {
 });
 
 load_projects();
-$("p.remove-done-todos").click(function() {
+$("div.clean-todo").click(function() {
 	var project_obj = $(this).parent().parent();
 	delete_finished_todos(project_obj);
 });

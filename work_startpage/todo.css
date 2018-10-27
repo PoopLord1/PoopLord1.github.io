@@ -2,9 +2,13 @@ div.single-todo {
 	padding-left: 25px;
 	position: relative;
 	height: 30px;
-
 	padding-top: 2px;
 	padding-bottom: 2px;
+}
+div.single-todo p::before {
+	content: " -  ";
+	position: relative;
+	height: -1px;
 }
 
 div.checkbox {
@@ -34,7 +38,7 @@ div.checkbox.done + p {
 div.single-todo p {
 	position: relative;
 	/*top: 50%;*/
-	top: 6px;
+	top: 5px;
 	/*transform: translate(0%, -50%);*/
 	margin: 0;
 	font-size: 11pt;
