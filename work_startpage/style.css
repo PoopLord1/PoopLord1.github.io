@@ -109,8 +109,8 @@ input#search {
 	/*box-shadow: 2px 2px 5px rgba(0,0,0,0.5);*/
 	font-size: 18pt;
 	padding: 10px;
-	background: none;
-	border-bottom: 2px solid rgb(50,50,50);
+	background: rgba(0,0,0,0);
+	border-bottom: 2px solid rgba(50,50,50,0.3);
 }
 input#search::placeholder {
 	color: rgba(0,0,0,0.2);
@@ -118,6 +118,23 @@ input#search::placeholder {
 input#search:focus {
 	/*box-shadow: 5px 5px 12px rgba(0,0,0,0.5);*/
 	outline: none;
+}
+
+input#search+span.underline {
+	content: "";
+	display: inline-block;
+	position: absolute;
+	left: 10px;
+	bottom: 10px;
+	height: 2px;
+	background-color: rgb(50,50,50);
+	width: 0;
+	transition: width 1s;
+	/*visibility: hidden;*/
+}
+input#search:focus+span.underline {
+	width: 100%;
+	/*visibility: visible;*/
 }
 
 /* Projects Container */
