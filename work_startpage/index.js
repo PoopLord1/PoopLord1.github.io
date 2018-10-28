@@ -119,8 +119,8 @@ function load_projects() {
 
 
 		// And finally append the project to the actual page
-		document.getElementById("projects").appendChild(project_node);
-
+		var project_node_jquery = $(project_node);
+		project_node_jquery.insertBefore( $("div#new-project") );
 	}
 }
 
@@ -183,7 +183,12 @@ function change_to_p(jquery_obj) {
 	var text = jquery_obj.val();
 	var parent = jquery_obj.parent();
 	var p_node = jquery_obj.remove();
-	parent.append("<p>" + text + "</p>");
+	if (parent.attr("class") == "heading") {
+		parent.append("<p class=\"title\">" + text + "</p>");
+	}
+	else {
+		parent.append("<p>" + text + "</p>");
+	}	
 	assign_handlers();
 	save_projects();
 }
@@ -315,6 +320,71 @@ $("form#search-form").on("submit", function () {
     var escaped_string = search_string.replace(" ", "%20");
     window.location = "http://www.google.com/search?q=" + escaped_string;
     return false;
+});
+
+// When we click on "New Project", create a new project object and allow us to type in it.
+$("div#new-project").click(function() {
+	var project_node = document.createElement("div");
+	project_node.className = "project";
+
+	// And then the title and sub-title
+	var heading_node = document.createElement("div");
+	heading_node.className = "heading";
+
+	var title_node = document.createElement("p");
+	title_node.className = "title";
+
+	var title_input = document.createElement("input");
+	title_input.type = "text";
+	title_input.className = "edit_p";
+	title_node.appendChild(title_input);
+
+	var subtitle_node = document.createElement("p");
+	subtitle_node.className = "subtitle";
+
+	heading_node.appendChild(title_input); // drop anything concerning title_node if this works.
+	heading_node.appendChild(subtitle_node);
+	project_node.appendChild(heading_node);
+
+	// Create the project content
+	var project_content_node = document.createElement("div");
+	project_content_node.className = "project-content";
+
+	// Create the icons-box div
+	var icon_box_node = document.createElement("div");
+	icon_box_node.className = "icon-box";
+
+	// Create the "new-todo" button
+	var add_todo_node = document.createElement("div");
+	add_todo_node.className = "icon add-todo";
+	var add_todo_img_node = document.createElement("img");
+	add_todo_img_node.src = "imgs/plus.png";
+	add_todo_node.appendChild(add_todo_img_node);
+	icon_box_node.appendChild(add_todo_node);
+
+	// Create the "Remove finished todos" text
+	var add_todo_node = document.createElement("div");
+	add_todo_node.className = "icon clean-todo";
+	var add_todo_img_node = document.createElement("img");
+	add_todo_img_node.src = "imgs/brush.png";
+	add_todo_node.appendChild(add_todo_img_node);
+	icon_box_node.appendChild(add_todo_node);
+
+	project_content_node.appendChild(icon_box_node);
+	project_node.appendChild(project_content_node);
+
+	// And finally append the project to the actual page
+	var project_node_jquery = $(project_node);
+	project_node_jquery.insertBefore( $("div#new-project") );
+
+	// Give focus to the Heading input
+	project_node_jquery.find("div.heading > input.edit_p").get(0).focus();
+
+	// Make sure that when we click away from it, it becomes a <p> element like it should.
+	assign_handlers();
+
+	// And bind the click function handler to the new project.
+	click_project();
 });
 
 load_projects();

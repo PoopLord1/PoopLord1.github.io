@@ -130,3 +130,14 @@ div#projects {
 	right: 7%;
 	top: 36%;
 }
+
+div#new-project {
+	font-style: italic;
+	opacity: 0.6;
+	transition: opacity 0.5s;
+	padding: 10px;
+}
+div#new-project:hover {
+	opacity: 1.0;
+	cursor: pointer;
+}
