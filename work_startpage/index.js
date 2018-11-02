@@ -42,81 +42,7 @@ function load_projects() {
 	// For each project in the JSON object,
 	for (var project in projects_obj) {
 
-		// Generate the overarching project node
-		var project_node = document.createElement("div");
-		project_node.className = "project";
-
-		// And then the title and sub-title
-		var heading_node = document.createElement("div");
-		heading_node.className = "heading";
-
-		var title_node = document.createElement("p");
-		title_node.className = "title";
-		
-		var title_text = document.createTextNode(project);
-		title_node.appendChild(title_text);
-		
-		var subtitle_node = document.createElement("p");
-		subtitle_node.className = "subtitle";
-
-		heading_node.appendChild(title_node);
-		heading_node.appendChild(subtitle_node);
-		project_node.appendChild(heading_node);
-
-		// Create the project content
-		var project_content_node = document.createElement("div");
-		project_content_node.className = "project-content";
-
-		// Then grab every todo and its status
-		var todo_list = projects_obj[project]["todos"];
-		console.log(todo_list);
-		for (var todo in todo_list) {
-			console.log("Here's one todo:");
-			console.log(todo);
-			var single_todo_node = document.createElement("div");
-			single_todo_node.className = "single-todo";
-
-			var checkbox_node = document.createElement("div");
-			checkbox_node.className = todo_list[todo]["status"] ? "checkbox done" : "checkbox unfinished";
-
-			var text_node = document.createElement("p");
-			var text_text = document.createTextNode(todo_list[todo]["text"]);
-			text_node.appendChild(text_text);
-
-			single_todo_node.appendChild(checkbox_node);
-			single_todo_node.appendChild(text_node);
-
-			project_content_node.appendChild(single_todo_node);
-		}
-		
-		// Create the icons-box div
-		var icon_box_node = document.createElement("div");
-		icon_box_node.className = "icon-box";
-
-		// Create the "new-todo" button
-		var add_todo_node = document.createElement("div");
-		add_todo_node.className = "icon add-todo";
-		var add_todo_img_node = document.createElement("img");
-		add_todo_img_node.src = "imgs/plus.png";
-		add_todo_node.appendChild(add_todo_img_node);
-		icon_box_node.appendChild(add_todo_node);
-
-		// Create the "Remove finished todos" text
-		var add_todo_node = document.createElement("div");
-		add_todo_node.className = "icon clean-todo";
-		var add_todo_img_node = document.createElement("img");
-		add_todo_img_node.src = "imgs/brush.png";
-		add_todo_node.appendChild(add_todo_img_node);
-		icon_box_node.appendChild(add_todo_node);
-		// var remove_finished_node = document.createElement("p");
-		// remove_finished_node.className = "remove-done-todos";
-		// var remove_finished_text = document.createTextNode("Remove all finished action items");
-		// remove_finished_node.appendChild(remove_finished_text);
-		// project_content_node.appendChild(remove_finished_node);
-
-		project_content_node.appendChild(icon_box_node);
-		project_node.appendChild(project_content_node);
-
+		var project_node = create_project_node(projects_obj, project);
 
 		// And finally append the project to the actual page
 		var project_node_jquery = $(project_node);
@@ -151,6 +77,7 @@ function refresh_all_action_items() {
 
 // When you click on a checkbox, the checkbox becomes filled
 function click_checkbox() {
+	$("div.checkbox").off();
 	$("div.checkbox").click(function() {
 		if ($(this).hasClass("done")) {
 			$(this).removeClass("done");
@@ -181,16 +108,40 @@ function change_to_input(jquery_obj) {
 // node and overwrite the saved todos to localStorage.
 function change_to_p(jquery_obj) {
 	var text = jquery_obj.val();
-	var parent = jquery_obj.parent();
-	var p_node = jquery_obj.remove();
-	if (parent.attr("class") == "heading") {
-		parent.append("<p class=\"title\">" + text + "</p>");
+	if (text.length > 0) {
+		var parent = jquery_obj.parent();
+		var p_node = jquery_obj.remove();
+		if (parent.attr("class") == "heading") {
+			parent.append("<p class=\"title\">" + text + "</p>");
+		}
+		else {
+			parent.append("<p>" + text + "</p>");
+		}	
+		assign_handlers();
+		save_projects();
+	} else {
+		jquery_obj.parent().remove()
 	}
-	else {
-		parent.append("<p>" + text + "</p>");
-	}	
-	assign_handlers();
-	save_projects();
+}
+
+// When a project heading entry box loses focus, we change it back to a p 
+// node and overwrite the saved todos to localStorage.
+function change_project_input_to_p(jquery_obj) {
+	var text = jquery_obj.val();
+	if (text.length > 0) {
+		var parent = jquery_obj.parent();
+		var p_node = jquery_obj.remove();
+		if (parent.attr("class") == "heading") {
+			parent.append("<p class=\"title\">" + text + "</p>");
+		}
+		else {
+			parent.append("<p>" + text + "</p>");
+		}	
+		assign_handlers();
+		save_projects();
+	} else {
+		jquery_obj.parent().parent().remove()
+	}
 }
 
 
@@ -208,6 +159,16 @@ function assign_handlers() {
 	$("input.edit_p").keydown(function(event) {
 		if (event.which == 13) {
 			change_to_p($(this));
+		}
+	});
+
+	$("input.edit_project_input_p").off();
+	$("input.edit_project_input_p").focusout(function() {
+		change_project_input_to_p($(this));
+	});
+	$("input.edit_project_input_p").keydown(function(event) {
+		if (event.which == 13) {
+			change_project_input_to_p($(this));
 		}
 	});
 }
@@ -229,12 +190,16 @@ function add_todo(project_obj) {
 	single_todo_node.appendChild(input_node);
 
 	project_obj.prepend(single_todo_node);
-	assign_handlers();
-	project_obj.find("div.single-todo input").first().focus();
+	
 }
+
 function click_add_todo() {
+	$("div.add-todo").off();
 	$("div.add-todo").click(function() {
 		add_todo($(this).parent().parent());
+		assign_handlers();
+		click_checkbox();
+		$(this).parent().parent().find("div.single-todo input").first().focus();
 	});
 }
 
@@ -322,77 +287,44 @@ $("form#search-form").on("submit", function () {
     return false;
 });
 
+
+function click_clean_todos() {
+	$("div.clean-todo").off();
+	$("div.clean-todo").click(function() {
+		var project_obj = $(this).parent().parent();
+		delete_finished_todos(project_obj);
+	});
+}
+
+
 // When we click on "New Project", create a new project object and allow us to type in it.
-$("div#new-project").click(function() {
-	var project_node = document.createElement("div");
-	project_node.className = "project";
-
-	// And then the title and sub-title
-	var heading_node = document.createElement("div");
-	heading_node.className = "heading";
-
-	var title_node = document.createElement("p");
-	title_node.className = "title";
-
-	var title_input = document.createElement("input");
-	title_input.type = "text";
-	title_input.className = "edit_p";
-	title_node.appendChild(title_input);
-
-	var subtitle_node = document.createElement("p");
-	subtitle_node.className = "subtitle";
-
-	heading_node.appendChild(title_input); // drop anything concerning title_node if this works.
-	heading_node.appendChild(subtitle_node);
-	project_node.appendChild(heading_node);
-
-	// Create the project content
-	var project_content_node = document.createElement("div");
-	project_content_node.className = "project-content";
-
-	// Create the icons-box div
-	var icon_box_node = document.createElement("div");
-	icon_box_node.className = "icon-box";
-
-	// Create the "new-todo" button
-	var add_todo_node = document.createElement("div");
-	add_todo_node.className = "icon add-todo";
-	var add_todo_img_node = document.createElement("img");
-	add_todo_img_node.src = "imgs/plus.png";
-	add_todo_node.appendChild(add_todo_img_node);
-	icon_box_node.appendChild(add_todo_node);
-
-	// Create the "Remove finished todos" text
-	var add_todo_node = document.createElement("div");
-	add_todo_node.className = "icon clean-todo";
-	var add_todo_img_node = document.createElement("img");
-	add_todo_img_node.src = "imgs/brush.png";
-	add_todo_node.appendChild(add_todo_img_node);
-	icon_box_node.appendChild(add_todo_node);
-
-	project_content_node.appendChild(icon_box_node);
-	project_node.appendChild(project_content_node);
+function create_new_project() {
+	var project_node = generate_empty_project();
 
 	// And finally append the project to the actual page
 	var project_node_jquery = $(project_node);
 	project_node_jquery.insertBefore( $("div#new-project") );
 
 	// Give focus to the Heading input
-	project_node_jquery.find("div.heading > input.edit_p").get(0).focus();
+	project_node_jquery.find("div.heading > input.edit_project_input_p").get(0).focus();
 
 	// Make sure that when we click away from it, it becomes a <p> element like it should.
 	assign_handlers();
 
+	click_add_todo();
+	click_checkbox();
+	click_clean_todos();
+
 	// And bind the click function handler to the new project.
 	click_project();
-});
+}
+
+
+$("div#new-project").click(create_new_project);
 
 load_projects();
-$("div.clean-todo").click(function() {
-	var project_obj = $(this).parent().parent();
-	delete_finished_todos(project_obj);
-});
 remove_active_project();
+click_clean_todos();
 click_project();
 click_checkbox();
 click_add_todo();
