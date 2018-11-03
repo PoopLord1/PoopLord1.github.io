@@ -189,14 +189,14 @@ function add_todo(project_obj) {
 	input_node.value = "";
 	single_todo_node.appendChild(input_node);
 
-	project_obj.prepend(single_todo_node);
+	project_obj.find("div.project-content").prepend(single_todo_node);
 	
 }
 
 function click_add_todo() {
 	$("div.add-todo").off();
 	$("div.add-todo").click(function() {
-		add_todo($(this).parent().parent());
+		add_todo($(this).parent().parent().parent());
 		assign_handlers();
 		click_checkbox();
 		$(this).parent().parent().find("div.single-todo input").first().focus();
@@ -223,7 +223,7 @@ function remove_active_project() {
 
 // Deletes all finished todos in the given jquery object
 function delete_finished_todos(jquery_obj) {
-	jquery_obj.find("div.single-todo div.done").parent().remove();
+	jquery_obj.find("div.project-content div.single-todo div.done").parent().remove();
 	save_projects();
 }
 
@@ -291,7 +291,7 @@ $("form#search-form").on("submit", function () {
 function click_clean_todos() {
 	$("div.clean-todo").off();
 	$("div.clean-todo").click(function() {
-		var project_obj = $(this).parent().parent();
+		var project_obj = $(this).parent().parent().parent();
 		delete_finished_todos(project_obj);
 	});
 }
